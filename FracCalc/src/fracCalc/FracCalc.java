@@ -36,7 +36,7 @@ public class FracCalc {
     { 
     		String[] splitInput = input.split(" ");
         Fraction operand = new Fraction(splitInput[2]);
-             
+        
         return operand.toString();
     }
 
