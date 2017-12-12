@@ -46,5 +46,13 @@ public class Fraction {
 	public String toString() {
 		return "whole:"+whole+" numerator:"+ numerator+" denominator:"+ denominator;
 	}
+	
+	public int[] getFrac() {
+		int[] resultFrac = new int[3];
+		resultFrac[0]=whole;
+		resultFrac[1]=numerator;
+		resultFrac[2]=denominator;
+		return resultFrac;
+	}
 
 }

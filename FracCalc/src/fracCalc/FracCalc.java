@@ -1,5 +1,6 @@
 package fracCalc;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class FracCalc {
@@ -35,9 +36,12 @@ public class FracCalc {
     public static String produceAnswer(String input)
     { 
     		String[] splitInput = input.split(" ");
-        Fraction operand = new Fraction(splitInput[2]);
+        Fraction operand1 = new Fraction(splitInput[0]);
+        Fraction operand2 = new Fraction(splitInput[2]);
+        String operation = splitInput[1];
+        OperationsOfFrac operateFrac = new OperationsOfFrac(operand1.getFrac(),operand2.getFrac(),operation);
         
-        return operand.toString();
+        return operateFrac.doOperation();
     }
 
     // TODO: Fill in the space below with any helper methods that you think you will need
