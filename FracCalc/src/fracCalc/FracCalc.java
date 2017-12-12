@@ -39,8 +39,7 @@ public class FracCalc {
         Fraction operand1 = new Fraction(splitInput[0]);
         Fraction operand2 = new Fraction(splitInput[2]);
         String operation = splitInput[1];
-        OperationsOfFrac operateFrac = new OperationsOfFrac(operand1.getFrac(),operand2.getFrac(),operation);
-        
+        OperationsOfFrac operateFrac = new OperationsOfFrac(operand1.getFrac(),operand2.getFrac(),operation); 
         return operateFrac.doOperation();
     }
 
