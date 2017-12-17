@@ -1,3 +1,12 @@
+/*@author: derfel terciano
+ * 
+ * 
+ * @version: 2 ALPHA
+ * 
+ * calculates fractions using objects
+ * 
+ */
+
 package fracCalc;
 
 import java.util.Arrays;

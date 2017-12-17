@@ -1,3 +1,11 @@
+/*
+ * @author: derfel terciano
+ * 
+ * @version: 2 ALPHA
+ * 
+ * calculates the fractions with the operations
+ * 
+ */
 package fracCalc;
 
 public class OperationsOfFrac {
@@ -10,6 +18,24 @@ public class OperationsOfFrac {
 		this.frac2 = frac2;
 		this.operation = operation;
 	}
+	
+	
+	/*ALGORITHM/DESCRIPTION
+	 * 
+	 * method name: addOrSubtractFrac
+	 * 
+	 * @param:String fracString1, String fracString2, String operation (arrays are always length 2)
+	 * @return String
+	 * 
+	 * this method adds or subtracts the fraction using the well-known and famous BOWTIE METHOD
+	 * 
+	 * the methods converts the string fraction input in an improper fraction
+	 * the main operations are stored in two corresponding variables
+	 * the method checks what operation is inputed and subtracts or adds the corresponding operations
+	 * 
+	 * in the end the method returns a simplified string
+	 * 
+	 */
 
 	public String addOrSubtractFrac(int[] inputFrac1, int[] inputFrac2, String operation) {
 		int[] frac1 = toImproperFrac(inputFrac1);
@@ -25,6 +51,28 @@ public class OperationsOfFrac {
 		result[1] = (frac1[1] * frac2[1]);
 		return toString(simplify(result));
 	}
+	
+	
+	/*ALGORITHM/DESCRIPTION
+	 * 
+	 * method name: multOrDivFrac
+	 * 
+	 * @param: String fracString1, String fracString2, String operation (arrays are always length 2)
+	 * @return: String
+	 * 
+	 * the method multiplies the numerators and denominators of the first frac to the 
+	 * numerators and denominators of the second frac in this order
+	 * 
+	 * to divide the method multiplies the numerators and denominators of the first frac to the 
+	 * denominator and numerator of the second frac in this order
+	 * 
+	 * the method converts the input fracs into improper form and does the above algorithms^ depending on
+	 * what the specified operation is
+	 * 
+	 * the method them returns the answer in a simplified string form
+	 * 
+ 	 * 
+	 */
 
 	public String multOrDivFrac(int[] inputFrac1, int[] inputFrac2, String operation) {
 		int[] frac1 = toImproperFrac(inputFrac1);
@@ -39,6 +87,30 @@ public class OperationsOfFrac {
 		}
 		return toString(simplify(result));
 	}
+	
+	/*ALGORITHM/DESCRIPTION
+	 * 
+	 * method name: toImproperFrac
+	 * 
+	 * Converts a Mixed Fraction into an Improper Fraction
+	 * 
+	 * @param: int[] inputFrac
+	 * @return: int[]
+	 * 
+	 * this method convert the mixed input frac of a mixed number array
+	 * into an array that has a length of 2 and stores the frac into the following form:
+	 * 
+	 * 				[wholeNum,numerator,denominator]->[numerator,denominator]
+	 * 
+	 * the method creates a result array with the length of 2
+	 * and stores each element of input array into the following:
+	 * 		x=wholeNum  y=Numerator  z=Denominator
+	 * 
+	 * the program then sets the numerator by multiplying x and z and then adding the y
+	 * if the whole num is a negative make it a positive and then do the operations above and conv back into a negative
+	 * the denominator stays the same 
+	 * return the formed improper fraction
+	 */
 
 	private int[] toImproperFrac(int[] inputFrac) {
 		int[] result = new int[2];
@@ -56,6 +128,27 @@ public class OperationsOfFrac {
 		result[1] = z;
 		return result;
 	}
+	
+	
+	/*ALGORITHM/DESCRIPTION
+	 * 
+	 * method name: simplify
+	 * 
+	 * @param: int[] fracInput
+	 * @return: int[]
+	 * 
+	 * 
+	 * the method find the gcf of the improper fraction and divides the numerator and denominator
+	 * by the gcf
+	 * 
+	 * the method also converts the answer into a mixed fraction array if needed
+	 * 
+	 * the method find the gcf of the fraction and divides accordingly to the numerator and denominator
+	 * we then check if the abs value of the numerator is greater than the denominator if so then convert the
+	 * improper to a mixed
+	 * 	-if the denominator of the mixed frac is negative then make it a positive
+	 * then return the mixed Frac if possible else return the improper frac
+	 */
 
 	private int[] simplify(int[] fracInput) {
 		int[] result = new int[2];
@@ -77,6 +170,21 @@ public class OperationsOfFrac {
 			return result;
 		}
 	}
+	
+	
+	/*ALGORTHM/DESCRIPTION
+	 * 
+	 * method name: toMixedNum
+	 * 
+	 * @param: int[] inputFrac
+	 * @return: int[]
+	 * 
+	 * converts an improper fraction into a mixed fraction
+	 * 
+	 * this uses the modulo of the fraction to create the numerator
+	 * the whole number would be the  numerator/denominator
+	 * the denominator stays the same and is returned in an array with the length of 3
+	 */
 
 	private int[] toMixedNum(int[] inputFrac) {
 		int[] mixedFracResult = new int[3];
@@ -90,13 +198,55 @@ public class OperationsOfFrac {
 		mixedFracResult[2] = inputFrac[1];
 		return mixedFracResult;
 	}
-
+	
+	
+	
+	/*ALGORITHN/DESCRIPTION
+	 * 
+	 * method name: gcf
+	 * 
+	 * @param: int num1, int num2
+	 * @returnL int
+	 * 
+	 * the method find the gcf using the Euclid's method
+	 * 
+	 * 
+	 * the method uses a form of recursion until the second number reached 0;
+	 */
 	private int gcf(int num1, int num2) {
 		if (num2 == 0) {
 			return num1;
 		}
 		return gcf(num2, num1 % num2);
 	}
+	
+	
+	/*ALGORITHM/DESCRIPTION
+	 * 
+	 * method name: toString
+	 * 
+	 * @param: int[] inputFrac
+	 * @return: String
+	 * 
+	 * this method converts an integer array to the appropriate answer in the form of a string
+	 * 
+	 * this method NEEDS to check the LENGTH of the array b/c when simplifying there are certain exception
+	 * to fractions for example, I could have returned [0,3,4] for any fractions without a whole number
+	 * however, it would be smoother if I sometimes have an array that just return the numerator or denominator
+	 * i.e [3,4] so that the program does not return the 0 with the string too.(Yes I have tried having the
+	 * arrays be the length of 3 and it didn't work too well)
+	 * 
+	 * We check if the length of the input is 3 and if it is then form the input result variable into the 
+	 * the appropriate String
+	 * if the length is 2 and the denominator is 1 then just return the numerator
+	 * if the length is 2 in general then return the numerator over the denominator
+	 * 
+	 * exceptional conditionals:
+	 * if the array length is 2 and the formed string is 0/1 or the numerator is 0 then return 0
+	 * if the length is 3 and the numerator is 0 just return the whole number
+	 * if the length is 3 and numerator equals the denominator then just return 1 
+	 * 
+	 */
 
 	public String toString(int[] inputFrac) {
 		String result = "";
@@ -117,6 +267,17 @@ public class OperationsOfFrac {
 		}
 		return result;
 	}
+	
+	
+	/*ALGORITHM/DESCRIPTION
+	 * 
+	 * @param: none
+	 * @return: String type
+	 * 
+	 * This instance method just calculates the intended operation and its fractions 
+	 * as defined in the instance methods at the top of the class.
+	 * 
+	 */
 	
 	public String doOperation() {
 		String result = "";
